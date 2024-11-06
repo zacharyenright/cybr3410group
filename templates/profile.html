@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2 class="text-center">User Profile</h2>
+        <h5>Username: {{ user[1] }}</h5> <!--  username is at index 1 -->
+        <h5>Password: {{ user[2] }}</h5>    <!--  password is at index 2 -->
+        <h5>Profile: {{ user[3] }}</h5>     <!--  Profile is at index 3 -->
+        
+        <a href="/search" class="btn btn-primary mt-3">Back to Search</a>
+    </div>
+</body>
+</html>
