@@ -10,10 +10,12 @@ def login(username, password):
 def search(query):
     conn = get_db_connection()
     sql = f"SELECT * FROM users WHERE username LIKE '%{query}%'"
-    results = conn.execute(sql).fetchall()
+    rows = conn.execute(sql).fetchall()
     conn.close()
+    results = [dict(row) for row in rows]  # Convert each row to a dictionary
     print(f"Results from DB: {results}")  # Debugging output
     return results
+
 
 def get_profile(user_id):
     conn = get_db_connection()
