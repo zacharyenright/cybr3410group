@@ -8,25 +8,52 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #002855; /* Dark blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
         .login-container {
             max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            background-color: #ffffff; /* Light background for the form */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
-        h2 {
+        .login-container img {
+            width: 80px; /* Adjust logo size */
+            margin-bottom: 15px;
+        }
+        .login-container h2 {
+            color: #002855; /* Dark blue for heading */
+            font-weight: bold;
             margin-bottom: 20px;
+        }
+        .form-group label {
+            color: #333;
+        }
+        .btn-primary {
+            background-color: #002855; /* Dark blue button */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #004080; /* Slightly lighter shade on hover */
+        }
+        .text-center a {
+            color: #ffc107; /* Accent color for links */
+        }
+        .text-center a:hover {
+            color: #e0a800; /* Slightly darker accent on hover */
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2 class="text-center">Login</h2>
+        <img src="path/to/logo.png" alt="Logo"> <!-- Replace with the actual path to your logo -->
+        <h2>Welcome Back</h2>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -36,7 +63,7 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
         </form>
         <div class="text-center mt-3">
             <a href="/register">Don't have an account? Register here</a>

@@ -3,32 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+    <title>Search Database</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #002855; /* Dark blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px; /* Add padding to avoid edge collision on smaller screens */
+        }
+        .search-container {
+            max-width: 800px; /* Increased width for a wider layout */
+            width: 100%; /* Ensure it takes up the full width up to max-width */
+            padding: 40px; /* Add more padding for a spacious feel */
+            border-radius: 8px;
+            background-color: #ffffff; /* Light background for the form */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .search-container img {
+            width: 80px; /* Adjust logo size */
+            margin-bottom: 15px;
+        }
+        .search-container h2 {
+            color: #002855; /* Dark blue for heading */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            color: #333;
+        }
+        .btn-primary {
+            background-color: #002855; /* Dark blue button */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #004080; /* Slightly lighter shade on hover */
+        }
+        .results {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .results ul {
+            padding: 0;
+            list-style: none;
+        }
+        .results p {
+            color: #555;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Search</h2>
+    <div class="search-container">
+        <img src="path/to/logo.png" alt="Logo"> <!-- Replace with the actual path to your logo -->
+        <h2>Search Database</h2>
         <form action="/search" method="POST">
             <div class="form-group">
                 <label for="query">Enter your search query</label>
-                <input type="text" class="form-control" id="query" name="query" required>
+                <input type="text" class="form-control" id="query" name="query" required placeholder="Type your search terms here...">
             </div>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary btn-block">Search</button>
         </form>
 
-        <h3 class="mt-4">Results</h3>
-        <div id="results">
-            {% if results and results|length > 0 %}  <!-- Ensure results are not empty -->
+        <h3 class="mt-4">Search Results</h3>
+        <div class="results">
+            {% if results and results|length > 0 %}
                 <ul class="list-group">
                     {% for result in results %}
-                        <li class="list-group-item">{{ result }}</li>  <!-- Access username by index -->
+                        <li class="list-group-item">{{ result.username }}</li>  <!-- Adjusted to display username field -->
                     {% endfor %}
                 </ul>
             {% else %}
-                <p>No results found.</p>
+                <p>No results found. Try different search terms.</p>
             {% endif %}
         </div>
     </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
