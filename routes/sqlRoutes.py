@@ -1,7 +1,12 @@
-from flask import Blueprint, render_template, request
-from controllers.sqlController import login,search,get_profile
+from flask import Blueprint, render_template, request, redirect, url_for
+from controllers.sqlController import login, search, get_profile
 
 sql_routes = Blueprint('sql_routes', __name__)
+
+@sql_routes.route('/')
+def home():
+    return redirect(url_for('sql_routes.login_route'))
+
 @sql_routes.route('/login', methods=['GET', 'POST'])
 def login_route():
     if request.method == 'POST':
@@ -9,7 +14,9 @@ def login_route():
         password = request.form['password']
         user = login(username, password)
         if user:
-            return f"Welcome, {user[1]}! Password: {user[2]}, and Profile: {user[3]}"  # Access by index
+            user_id = user['id']  # Assuming `user` is a dictionary and has an `id` field
+            # Redirect to the user's profile page using their user ID
+            return redirect(url_for('sql_routes.profile_route', user_id=user_id))
         else:
             return "Login failed."
     return render_template('login.html')
@@ -26,7 +33,7 @@ def search_route():
 
 @sql_routes.route('/profile/<int:user_id>', methods=['GET'])
 def profile_route(user_id):
-    user = get_profile(user_id)  #  This function retrieves the user's profile
+    user = get_profile(user_id)  # This function retrieves the user's profile
     if user:
         return render_template('profile.html', user=user)
     else:
