@@ -7,27 +7,58 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #002855; /* Dark blue background to match the login page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
         .profile-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: #ffffff; /* Light background for the container */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .profile-container img {
+            width: 80px; /* Adjust logo size */
+            margin-bottom: 15px;
+        }
+        .profile-container h2 {
+            color: #002855; /* Dark blue for heading */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .profile-container h5 {
+            color: #333;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+        .btn-primary {
+            background-color: #002855; /* Dark blue button to match the login page */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #004080; /* Slightly lighter shade on hover */
         }
     </style>
 </head>
 <body>
     <div class="profile-container">
-        <h2 class="text-center">User Profile</h2>
-        <h5>Username: {{ user[1] }}</h5> <!--  username is at index 1 -->
-        <h5>Password: {{ user[2] }}</h5>    <!--  password is at index 2 -->
-        <h5>Profile: {{ user[3] }}</h5>     <!--  Profile is at index 3 -->
-        
+        <img src="{{ url_for('static', filename='logo1.png') }}" alt="Logo">
+        <h2>User Profile</h2>
+        <h5>Username: {{ user[1] }}</h5> <!-- username is at index 1 -->
+        <h5>Password: {{ user[2] }}</h5>    <!-- password is at index 2 -->
+        <h5>Profile: {{ user[3] }}</h5>     <!-- Profile is at index 3 -->
+
         <a href="/search" class="btn btn-primary mt-3">Back to Search</a>
     </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
